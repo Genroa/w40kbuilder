@@ -1,0 +1,146 @@
+<template name="edit">
+	<a href="{{pathFor route='home'}}">Retour à l'accueil</a>
+	<br>
+	{{setTitle "Edition de l'armée " army.name }}
+	<h3>Edition de l'armée {{army.name}} ({{getArmyReferenceName army.reference}})</h3>
+
+	<h4>Unités ajoutables:</h4>
+	
+
+	<style>
+		.forbidden_unit_choice {
+			color: red;
+		}
+
+		.add_unit {
+			color: green;
+		}
+	</style>
+	{{#each unit_choice in (getAuthorizedUnitsForArmy army)}}
+		<br>
+		{{#if unit_choice.authorized }}
+			<a href="#" class="add_unit" data-reference_id="{{unit_choice.reference._id}}">
+				{{unit_choice.reference.name}} 
+
+				{{#if unit_choice.message}}
+					({{unit_choice.message}})
+				{{/if}}
+			</a>
+		{{else}}
+			<div class="forbidden_unit_choice">
+				{{unit_choice.reference.name}} 
+
+				{{#if unit_choice.message}}
+					({{unit_choice.message}})
+				{{/if}}
+			</div>
+		{{/if}}
+	{{/each}}
+
+
+	<h4>Liste des unités de l'armée:</h4>
+
+	<ul>
+	{{#each unit in army.units}}
+		<div class="row">
+	        <div class="col s12">
+				<div class="card grey lighten-3">
+					<div class="card-content deep-purple-text">
+						<span class="card-title">{{getUnitReferenceName unit.reference}} (Identifiant: {{unit.pseudo}}) ({{unit.computeCost}} pts)</span>
+						<p>
+						<h5>Profiles:</h5>
+						<table class="striped responsive-table centered">
+							<thead>
+								<tr>
+									<th>
+										Quantité
+									</th>
+									<th>
+										Nom
+									</th>
+									<th>
+										M
+									</th>
+									<th>
+										WS
+									</th>
+									<th>
+										BS
+									</th>
+									<th>
+										S
+									</th>
+									<th>
+										T
+									</th>
+									<th>
+										W
+									</th>
+									<th>
+										A
+									</th>
+									<th>
+										Ld
+									</th>
+									<th>
+										Svg
+									</th>
+									<th>
+										InvSvg
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each compactedProfile in unit.computeCompactedProfiles}}
+									<tr>
+										<td>
+											{{compactedProfile.number}}
+										</td>
+										<td>
+											{{compactedProfile.name}} 
+										</td>
+										<td>
+											{{compactedProfile.profile.M}}&nbsp;&nbsp;
+										</td>
+										<td>
+											{{compactedProfile.profile.WS}}+&nbsp;&nbsp;
+										</td>
+										<td>
+											{{compactedProfile.profile.BS}}+&nbsp;&nbsp;
+										</td>
+										<td>
+											{{compactedProfile.profile.S}}&nbsp;&nbsp;
+										</td>
+										<td>
+											{{compactedProfile.profile.T}}&nbsp;&nbsp;
+										</td>
+										<td>
+											{{compactedProfile.profile.W}}&nbsp;&nbsp;
+										</td>
+										<td>
+											{{compactedProfile.profile.A}}&nbsp;&nbsp;
+										</td>
+										<td>
+											{{compactedProfile.profile.Ld}}+&nbsp;&nbsp;
+										</td>
+										<td>
+											{{compactedProfile.profile.Svg}}+&nbsp;&nbsp;
+										</td>
+										<td>
+											{{formatSvg compactedProfile.profile.InvSvg}}&nbsp;&nbsp;
+										</td>
+									</tr>
+								{{/each}}
+							</tbody>
+						</table></p>
+					</div>
+					<div class="card-action">
+						<a data-position="{{@index}}" class="edit_unit" href="">Editer</a>
+						<a data-position="{{@index}}" class="delete_unit" href="">Supprimer</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/each}}
+	</ul>
+</template>

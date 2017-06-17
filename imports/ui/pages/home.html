@@ -1,0 +1,29 @@
+<template name="home">
+	{{setTitle "Home"}}
+	<h3>Hey! Welcome to this W40k Army Builder!</h3>
+
+	<h4>You armies lists:</h4>
+	<ul>
+		{{#each army in getUserArmies}}
+			<li>{{army.name}} ({{getArmyReferenceName army.reference}}), {{army.computeCost}} pts <a href="/edit/{{army._id}}">(Editer)</a></li>
+		{{/each}}
+	</ul>
+
+
+	<h4>Create a new army list:</h4>
+	<form id="create_army" method="POST" action="">
+		<div>
+			<label for="army_type">Armée</label>
+			<select id="army_type" name="army_type" required>
+				{{#each armyReference in getArmyReferences }}
+					<option value="{{armyReference._id}}">{{armyReference.name}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div>
+			<label for="army_name">Nom</label>
+			<input type="text" id="army_name" name="army_name" required/>
+		</div>
+		<button type="submit">Créer une nouvelle liste</button>
+	</form>
+</template>
