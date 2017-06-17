@@ -10,7 +10,7 @@ import './references/armies.js';
 
 
 
-import '../../api/army/definition.js';
+import '../../api/instances/definition.js';
 
 
 

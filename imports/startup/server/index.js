@@ -16,8 +16,8 @@ Meteor.startup(() => {
 	import '../../api/army_reference/server/publications.js';
 	import '../../api/army_reference/methods.js';
 
-	import '../../api/army/server/publications.js';
-	import '../../api/army/methods.js';
+	import '../../api/instances/server/publications.js';
+	import '../../api/instances/methods.js';
 	
 	import './references_imports.js';
 });
