@@ -4,6 +4,17 @@ import { Class } from "meteor/jagi:astronomy";
 
 
 
+WargearSlotOptions = Object.freeze({
+	
+	GRENADE1:Symbol(),
+	GRENADE2:Symbol(),
+	TENTACLE:Symbol(),
+	WEAPON1:Symbol(),
+	WEAPON2:Symbol(),
+	JUMPPACK:Symbol()
+});
+
+
 
 WargearReference = Class.create({
 	name: 'WargearReference',
