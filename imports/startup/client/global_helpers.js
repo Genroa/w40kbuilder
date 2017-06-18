@@ -31,8 +31,13 @@ Template.registerHelper("print", function(obj) {
 
 
 Template.registerHelper("formatSvg", function(value) {
-	return value > 0 ? value+"+" : "NA";
+	return value > 0 ? value+"+" : "-";
 });
+
+Template.registerHelper("formatStat", function(value) {
+	return value > 0 ? value : "-";
+});
+
 
 Template.registerHelper("getArmyReferences", function() {
 	return ArmyReference.find({}, {sort: {name: 1}});
@@ -51,6 +56,12 @@ Template.registerHelper("getUnitReferenceName", function(id) {
 	let ref = UnitReference.findOne({_id: id});
 	return ref && ref.name;
 });
+
+Template.registerHelper("getUnitRules", function(unit) {
+	let ref = UnitReference.findOne({_id: unit.reference});
+	return ref && ref.rules;
+});
+
 
 
 Template.registerHelper("getAuthorizedUnitsForArmy", function(army) {

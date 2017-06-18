@@ -1,1 +1,31 @@
 /* CSS declarations go here */
+
+
+.profile_column {
+	word-wrap: break-word !important;
+	width: 35% !important;
+}
+
+.stat_modified {
+	color: #8bc34a;
+}
+
+
+
+
+
+
+
+
+
+.tutorial_point {
+	width: 64px;
+	padding: 50px;
+	background: none;
+}
+
+/*
+.tap-target-wave::before {
+	opacity: 0.8;
+}
+*/

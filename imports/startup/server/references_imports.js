@@ -4,6 +4,7 @@ import { Accounts } from 'meteor/accounts-base';
 console.log("running references creation...");
 
 
+import './references/rules.js';
 import './references/models.js';
 import './references/units.js';
 import './references/armies.js';

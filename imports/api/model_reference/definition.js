@@ -16,7 +16,24 @@ ModelProfile = Class.create({
 		A: Number,
 		Ld: Number,
 		Svg: Number,
-		InvSvg: Number
+		InvSvg: Number,
+		modified: {
+			type: Object,
+			default: function() {
+				return {
+					M: false,
+					WS: false,
+					BS: false,
+					S: false,
+					T: false,
+					W: false,
+					A: false,
+					Ld: false,
+					Svg: false,
+					InvSvg: false
+				};
+			}
+		}
 	},
 	helpers: {
 		profileCopy() {
@@ -52,7 +69,9 @@ ModelReference = Class.create({
 			return new Model({
 				reference: this._id,
 				woundsLeft: this.profile.W,
-				wargear: {}
+				wargear: {"main_weapon": "Boltgun", 
+						  "grenade1": "Frag grenades", 
+						  "grenade2": "Krak grenades"}
 			});
 		}
 	}

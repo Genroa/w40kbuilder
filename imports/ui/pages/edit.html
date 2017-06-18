@@ -39,6 +39,23 @@
 
 
 	<h4>Liste des unités de l'armée:</h4>
+	<span id="units_anchor" class="tutorial_point"></span>
+
+	<div id="unit_anchor_tutorial" class="tap-target cyan" data-activates="units_anchor">
+		<div class="tap-target-content">
+			<h5>Liste des unités</h5>
+			<p>Ici se trouve la liste des unités de votre liste d'armée.</p>
+		</div>
+	</div>
+
+	<span id="units_anchor2" class="tutorial_point"></span>
+
+	<div id="unit_anchor_tutorial2" class="tap-target cyan" data-activates="units_anchor2">
+		<div class="tap-target-content">
+			<h5>Liste des unités</h5>
+			<p>Ici se trouve la liste des unités de votre liste d'armée.</p>
+		</div>
+	</div>
 
 	<ul>
 	{{#each unit in army.units}}
@@ -47,92 +64,103 @@
 				<div class="card grey lighten-3">
 					<div class="card-content deep-purple-text">
 						<span class="card-title">{{getUnitReferenceName unit.reference}} (Identifiant: {{unit.pseudo}}) ({{unit.computeCost}} pts)</span>
-						<p>
-						<h5>Profiles:</h5>
-						<table class="striped responsive-table centered">
-							<thead>
-								<tr>
-									<th>
-										Quantité
-									</th>
-									<th>
-										Nom
-									</th>
-									<th>
-										M
-									</th>
-									<th>
-										WS
-									</th>
-									<th>
-										BS
-									</th>
-									<th>
-										S
-									</th>
-									<th>
-										T
-									</th>
-									<th>
-										W
-									</th>
-									<th>
-										A
-									</th>
-									<th>
-										Ld
-									</th>
-									<th>
-										Svg
-									</th>
-									<th>
-										InvSvg
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								{{#each compactedProfile in unit.computeCompactedProfiles}}
+						
+						<div> <!-- profiles -->
+							<h5>Profils:</h5>
+							
+							<table class="striped responsive-table centered">
+								<thead>
 									<tr>
-										<td>
-											{{compactedProfile.number}}
-										</td>
-										<td>
-											{{compactedProfile.name}} 
-										</td>
-										<td>
-											{{compactedProfile.profile.M}}&nbsp;&nbsp;
-										</td>
-										<td>
-											{{compactedProfile.profile.WS}}+&nbsp;&nbsp;
-										</td>
-										<td>
-											{{compactedProfile.profile.BS}}+&nbsp;&nbsp;
-										</td>
-										<td>
-											{{compactedProfile.profile.S}}&nbsp;&nbsp;
-										</td>
-										<td>
-											{{compactedProfile.profile.T}}&nbsp;&nbsp;
-										</td>
-										<td>
-											{{compactedProfile.profile.W}}&nbsp;&nbsp;
-										</td>
-										<td>
-											{{compactedProfile.profile.A}}&nbsp;&nbsp;
-										</td>
-										<td>
-											{{compactedProfile.profile.Ld}}+&nbsp;&nbsp;
-										</td>
-										<td>
-											{{compactedProfile.profile.Svg}}+&nbsp;&nbsp;
-										</td>
-										<td>
-											{{formatSvg compactedProfile.profile.InvSvg}}&nbsp;&nbsp;
-										</td>
+										<th>
+											Quantité
+										</th>
+										<th>
+											Nom
+										</th>
+										<th>
+											M
+										</th>
+										<th>
+											WS
+										</th>
+										<th>
+											BS
+										</th>
+										<th>
+											S
+										</th>
+										<th>
+											T
+										</th>
+										<th>
+											W
+										</th>
+										<th>
+											A
+										</th>
+										<th>
+											Ld
+										</th>
+										<th>
+											Svg
+										</th>
+										<th>
+											InvSvg
+										</th>
 									</tr>
-								{{/each}}
-							</tbody>
-						</table></p>
+								</thead>
+								<tbody>
+									{{#each compactedProfile in unit.computeCompactedProfiles}}
+										<tr>
+											<td>
+												{{compactedProfile.number}}
+											</td>
+											<td class="profile_column">
+												<span class="truncate">
+													{{{compactedProfile.name}}}
+												</span>
+											</td>
+											<td class="{{isModified compactedProfile.profile "M"}}">
+												{{formatStat compactedProfile.profile.M}}
+											</td>
+											<td class="{{isModified compactedProfile.profile "WS"}}">
+												{{formatSvg compactedProfile.profile.WS}}
+											</td>
+											<td class="{{isModified compactedProfile.profile "BS"}}">
+												{{formatSvg compactedProfile.profile.BS}}
+											</td>
+											<td class="{{isModified compactedProfile.profile "S"}}">
+												{{formatStat compactedProfile.profile.S}}
+											</td>
+											<td class="{{isModified compactedProfile.profile "T"}}">
+												{{formatStat compactedProfile.profile.T}}
+											</td>
+											<td class="{{isModified compactedProfile.profile "W"}}">
+												{{formatStat compactedProfile.profile.W}}
+											</td>
+											<td class="{{isModified compactedProfile.profile "A"}}">
+												{{formatStat compactedProfile.profile.A}}
+											</td>
+											<td class="{{isModified compactedProfile.profile "Ld"}}">
+												{{formatSvg compactedProfile.profile.Ld}}
+											</td>
+											<td class="{{isModified compactedProfile.profile "Svg"}}">
+												{{formatSvg compactedProfile.profile.Svg}}
+											</td>
+											<td class="{{isModified compactedProfile.profile "InvSvg"}}">
+												{{formatSvg compactedProfile.profile.InvSvg}}
+											</td>
+										</tr>
+									{{/each}}
+								</tbody>
+							</table>
+						</div>
+						<div> <!-- rules -->
+							<h5>Règles:</h5>
+							{{#each rule in getUnitRules unit}}
+								<a href="" class="tooltipped waves-effect waves-teal btn-flat" data-html="true" data-position="top" data-tooltip="{{rule.description}}">{{rule.name}}</a>
+							{{/each}}
+						</div>
 					</div>
 					<div class="card-action">
 						<a data-position="{{@index}}" class="edit_unit" href="">Editer</a>

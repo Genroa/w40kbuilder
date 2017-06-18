@@ -36,7 +36,7 @@ class LimitedNumberSelector extends _ArmyUnitChoicesSelectors {
 						if(params.max == 1) {
 							choice.message = "cette unité ne peut exister qu'en un seul exemplaire";
 						} else {
-							choice.message = "cette unité ne peut exister qu'en "+params.max+" exemplaire(s)";
+							choice.message = "cette unité ne peut exister qu'en "+params.max+" exemplaires";
 						}
 						
 					}

@@ -1,6 +1,7 @@
 
 
 import { Class } from "meteor/jagi:astronomy";
+import '../rule_reference/definition.js';
 
 
 
@@ -66,6 +67,9 @@ ModelChoice = Class.create({
 
 
 
+
+
+
 UnitReference = Class.create({
 	name: 'UnitReference',
 	collection: new Mongo.Collection('unit_reference'),
@@ -73,6 +77,7 @@ UnitReference = Class.create({
 		name: String,
 		models: [ModelChoice],
 		powerLevelProcessor: Object,
+		rules: [Rule],
 		keywords: [String],
 		factionKeywords: [String]
 	},

@@ -7,6 +7,12 @@ Meteor.startup(() => {
 	import '../../api/users/server/publications.js';
 	import '../../api/users/methods.js';
 
+	import '../../api/rule_reference/server/publications.js';
+	import '../../api/rule_reference/methods.js';
+
+	import '../../api/wargear_reference/server/publications.js';
+	import '../../api/wargear_reference/methods.js';
+
 	import '../../api/model_reference/server/publications.js';
 	import '../../api/model_reference/methods.js';
 

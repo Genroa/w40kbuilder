@@ -83,3 +83,22 @@ new ModelReference({
 		InvSvg: 0
 	})
 }).save();
+
+
+new ModelReference({
+	name: "Watcher in the Dark",
+	wargearOptions: {}, // TODO
+	pointsCost: 0,
+	profile: new ModelProfile({
+		M: 0,
+		WS: 0,
+		BS: 0,
+		S: 0,
+		T: 0,
+		W: 0,
+		A: 0,
+		Ld: 0,
+		Svg: 0,
+		InvSvg: 0
+	})
+}).save();

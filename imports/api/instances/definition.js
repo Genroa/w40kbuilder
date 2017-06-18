@@ -20,12 +20,19 @@ Model = Class.create({
 			return cost;
 		},
 
-		computeProfile() {
+		computeProfile(unit) {
 			let model_reference = ModelReference.findOne({_id: model.reference});
-
+			let profile = model_reference.profile.profileCopy();
 			// TODO apply rules and wargear modificators
 
-			return model_reference.profile.profileCopy();
+			let unit_reference = UnitReference.findOne({_id: unit.reference});
+			
+			for(rule of unit_reference.rules) {
+				rule.applyModificationToProfile(unit, profile);
+			}
+
+
+			return profile;
 		}
 	}
 });
@@ -46,7 +53,7 @@ Unit = Class.create({
 			for(model of this.models) {
 				cost += model.computeCost();
 			}
-			console.log(this.computeCompactedProfiles());
+			//console.log(this.computeCompactedProfiles());
 			return cost;
 		},
 
@@ -55,15 +62,17 @@ Unit = Class.create({
 
 			for(model of this.models) {
 				let model_reference = ModelReference.findOne({_id: model.reference});
-				let profileName = model_reference.name;
+				let profileName = model_reference.name + " (";
 				for(wargearSlot in model.wargear) {
-					profileName += " + "+model.wargear[wargearSlot]; // TODO FIX different choice order
+					profileName += model.wargear[wargearSlot]+", "; // TODO FIX different choice order
 				}
+
+				profileName = profileName.slice(0, -2) + ")";
 
 				if(!profiles[profileName]) {
 					profiles[profileName] = {
 						name: profileName,
-						profile: model.computeProfile(),
+						profile: model.computeProfile(this),
 						number: 1
 					};
 				} else {
