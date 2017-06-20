@@ -1,8 +1,21 @@
 <template name="loading">
 	<div class="mdl-grid">
 		<div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-tablet mdl-cell--4-phone" style="text-align: center">
-			<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
-			<div>Loading...</div>
+		
+			<div class="preloader-wrapper small active">
+				<div class="spinner-layer spinner-blue-only">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+					</div>
+					<div class="gap-patch">
+						<div class="circle"></div>
+					</div>
+					<div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </template>

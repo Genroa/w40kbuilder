@@ -1,0 +1,22 @@
+{
+	"units": {
+		"misc": {
+			"profile": "Profile",
+			"profiles": "Profiles",
+			"model_name": "Name",
+			"number_of_models": "Quantity",
+			"unit_profile": {
+				"M": "M",
+				"WS": "WS",
+				"BS": "BS",
+				"S": "S",
+				"T": "T",
+				"W": "W",
+				"A": "A",
+				"Ld": "Ld",
+				"Svg": "Svg",
+				"InvSvg": "InvSvg"
+			}
+		}
+	}
+}

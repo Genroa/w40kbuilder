@@ -12,7 +12,13 @@
 
 
 
+.forbidden_unit_choice {
+	color: red;
+}
 
+.add_unit {
+	color: green;
+}
 
 
 

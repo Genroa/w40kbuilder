@@ -27,3 +27,4 @@ accounts-password
 session
 iron:router
 meteorhacks:subs-manager
+tap:i18n

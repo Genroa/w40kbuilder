@@ -38,7 +38,7 @@ Template.edit.events({
 	},
 
 	'click .delete_unit' : function(evt) {
-		Meteor.call("remove_unit_from_army", this.army._id, evt.target.dataset.position, function(err, res) {
+		Meteor.call("remove_unit_from_army", this.army._id, evt.target.dataset.uid, function(err, res) {
 			
 		});
 	}

@@ -1,7 +1,9 @@
 
+const uuidv4 = require('uuid/v4');
+import { Class, Type } from "meteor/jagi:astronomy";
 
-import { Class } from "meteor/jagi:astronomy";
-
+const KEY = 0;
+const VALUE = 1;
 
 Model = Class.create({
 	name: 'Model',
@@ -11,7 +13,7 @@ Model = Class.create({
 		wargear: Object
 	},
 	helpers: {
-		computeCost() {
+		computeCost(army) {
 			let cost = ModelReference.findOne({_id: this.reference}).pointsCost;
 			for(wargearSlot in this.wargear) {
 				//cost += ...; //TODO
@@ -45,13 +47,17 @@ Unit = Class.create({
 	fields: {
 		pseudo: String,
 		reference: String,
+		_uid: {
+			type: String,
+			default: function(){return '';}
+		},
 		models: [Model]
 	},
 	helpers: {
-		computeCost() {
+		computeCost(army) {
 			let cost = 0;
 			for(model of this.models) {
-				cost += model.computeCost();
+				cost += model.computeCost(army);
 			}
 			//console.log(this.computeCompactedProfiles());
 			return cost;
@@ -87,6 +93,23 @@ Unit = Class.create({
 
 
 
+Type.create({
+	name: 'Map',
+	class: Map,
+	cast(value) {
+		console.log(value);
+		return value;
+	},
+
+	
+	validate(args) {
+		console.log("Args:");
+		console.log(args);
+		return true;
+	}
+});
+
+
 Army = Class.create({
 	name: 'Army',
 	collection: new Mongo.Collection('army'),
@@ -95,17 +118,40 @@ Army = Class.create({
 		owner: String,
 		reference: String,
 		units: {
-			type: [Unit],
-			default: function() { return []; }
+			type: Object,
+			default: function(){return {};}
 		}
 	},
 	helpers: {
 		computeCost() {
 			let cost = 0;
-			for(unit of this.units) {
-				cost += unit.computeCost();
+			for(let elem of this.getUnits()) {
+				cost += elem.computeCost(this);
 			}
 			return cost;
+		},
+		
+		getUnits() {
+			return Object.values(this.units);
+		},
+		
+		getUnitsUIDs() {
+			return Object.keys(this.units);
+		},
+		
+		getUnit(uid) {
+			return this.units[uid];
+		},
+		
+		addUnit(unit) {
+			let uid = uuidv4();
+			
+			unit._uid = uid;
+			this.units[uid] = unit;
+		},
+		
+		removeUnit(uid) {
+			delete this.units[uid];
 		}
 	}
 });

@@ -18,13 +18,14 @@ Meteor.methods({
 		let army = Army.findOne({_id: army_id});
 		let unit_reference = UnitReference.findOne({_id: unit_reference_id});
 		
-		army.units.push(unit_reference.buildDefaultInstance());
+		army.addUnit(unit_reference.buildDefaultInstance());
 		army.save();
 	},
 
-	"remove_unit_from_army" : function(army_id, position) {
+	"remove_unit_from_army" : function(army_id, uid) {
 		let army = Army.findOne({_id: army_id});
-		army.units.splice(position, 1);
+		//console.log("Removing unit "+uid+" "+army_id);
+		army.removeUnit(uid);
 		army.save();
 	}
 });

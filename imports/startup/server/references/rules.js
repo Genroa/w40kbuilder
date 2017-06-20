@@ -10,8 +10,8 @@ import '../../../api/rule_reference/definition.js';
 _Rules = {
 		"Storm Shield": new Rule({
 			name: "Storm Shield",
-			description: "Models equipped with a storm shield have a 3+ invulnerable save",
-			profileModifierFunction: "" // TODO
+			description: "Models equipped with a storm shield have a 3+ invulnerable save"
+			//profileModifier: null // TODO
 		}),
 		"Teleport Strike": new Rule({
 			name: "Teleport Strike",
@@ -20,8 +20,10 @@ _Rules = {
 		"Terminator Armour" : new Rule({
 			name: "Terminator Armour",
 			description: "Models with Terminator Armor in this unit have 5+ invulnerable save",
-			profileModifierFunction: "InvSvgModifier",
-			params: {value: 5}
+			profileModifier: new StatsModifierContainer({
+				statFunction: "InvSvgModifier",
+				params: {value: 5}
+			})
 		}),
 		"Unforgiven": new Rule({
 			name: "Unforgiven",

@@ -1,0 +1,27 @@
+{
+	"menus": {
+		"misc": {
+			"army": "Army",
+			"back_to_home": "Back to home",
+			"disconnect": "Disconnect",
+			"edit": "Edit",
+			"name": "Name",
+			"points_unit": "pt",
+			"points_unit_plural": "pts"
+		},
+		"home": {
+			"page_name": "Home",
+			"welcome": "Hey, welcome on this Warhammer 40k 8th edition army builder!",
+			"your_lists": "You armies lists:",
+			"create_army": "Create a new army list"
+		},
+		"edit": {
+			"page_name": "Editing army \"%s\"",
+			"available_units": "Available units",
+			"units_in_army": "Units list",
+			"rules": "Rules",
+			"edit_unit": "Edit unit",
+			"delete_unit": "Delete unit"
+		}
+	}
+}

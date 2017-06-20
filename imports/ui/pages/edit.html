@@ -1,21 +1,13 @@
 <template name="edit">
-	<a href="{{pathFor route='home'}}">Retour à l'accueil</a>
+	<a href="{{pathFor route='home'}}">{{_ "menus.misc.back_to_home"}}</a>
 	<br>
-	{{setTitle "Edition de l'armée " army.name }}
-	<h3>Edition de l'armée {{army.name}} ({{getArmyReferenceName army.reference}})</h3>
+	{{setTitle (_ "menus.edit.page_name" army.name) }}
+	<h3>{{_ "menus.edit.page_name" army.name}} ({{getArmyReferenceName army.reference}})</h3>
 
-	<h4>Unités ajoutables:</h4>
+	<h4>{{_ "menus.edit.available_units"}}:</h4>
 	
-
-	<style>
-		.forbidden_unit_choice {
-			color: red;
-		}
-
-		.add_unit {
-			color: green;
-		}
-	</style>
+	
+	
 	{{#each unit_choice in (getAuthorizedUnitsForArmy army)}}
 		<br>
 		{{#if unit_choice.authorized }}
@@ -38,7 +30,7 @@
 	{{/each}}
 
 
-	<h4>Liste des unités de l'armée:</h4>
+	<h4>{{_ "menus.edit.units_in_army"}}</h4>
 	<span id="units_anchor" class="tutorial_point"></span>
 
 	<div id="unit_anchor_tutorial" class="tap-target cyan" data-activates="units_anchor">
@@ -58,54 +50,55 @@
 	</div>
 
 	<ul>
-	{{#each unit in army.units}}
+	{{#each unit in army.getUnits}}
 		<div class="row">
 	        <div class="col s12">
 				<div class="card grey lighten-3">
 					<div class="card-content deep-purple-text">
-						<span class="card-title">{{getUnitReferenceName unit.reference}} (Identifiant: {{unit.pseudo}}) ({{unit.computeCost}} pts)</span>
-						
+						{{#let cost=unit.computeCost}}
+							<span class="card-title">{{getUnitReferenceName unit.reference}} (Id: {{unit.pseudo}}) ({{cost}} {{_ "menus.misc.points_unit" count=cost}})</span>
+						{{/let}}
 						<div> <!-- profiles -->
-							<h5>Profils:</h5>
+							<h5>{{_ "units.misc.profiles"}}:</h5>
 							
 							<table class="striped responsive-table centered">
 								<thead>
 									<tr>
 										<th>
-											Quantité
+											{{_ "units.misc.number_of_models"}}
 										</th>
 										<th>
-											Nom
+											{{_ "units.misc.model_name"}}
 										</th>
 										<th>
-											M
+											{{_ "units.misc.unit_profile.M"}}
 										</th>
 										<th>
-											WS
+											{{_ "units.misc.unit_profile.WS"}}
 										</th>
 										<th>
-											BS
+											{{_ "units.misc.unit_profile.BS"}}
 										</th>
 										<th>
-											S
+											{{_ "units.misc.unit_profile.S"}}
 										</th>
 										<th>
-											T
+											{{_ "units.misc.unit_profile.T"}}
 										</th>
 										<th>
-											W
+											{{_ "units.misc.unit_profile.W"}}
 										</th>
 										<th>
-											A
+											{{_ "units.misc.unit_profile.A"}}
 										</th>
 										<th>
-											Ld
+											{{_ "units.misc.unit_profile.Ld"}}
 										</th>
 										<th>
-											Svg
+											{{_ "units.misc.unit_profile.Svg"}}
 										</th>
 										<th>
-											InvSvg
+											{{_ "units.misc.unit_profile.InvSvg"}}
 										</th>
 									</tr>
 								</thead>
@@ -156,15 +149,15 @@
 							</table>
 						</div>
 						<div> <!-- rules -->
-							<h5>Règles:</h5>
+							<h5>{{_ "menus.edit.rules"}}:</h5>
 							{{#each rule in getUnitRules unit}}
 								<a href="" class="tooltipped waves-effect waves-teal btn-flat" data-html="true" data-position="top" data-tooltip="{{rule.description}}">{{rule.name}}</a>
 							{{/each}}
 						</div>
 					</div>
 					<div class="card-action">
-						<a data-position="{{@index}}" class="edit_unit" href="">Editer</a>
-						<a data-position="{{@index}}" class="delete_unit" href="">Supprimer</a>
+						<a class="edit_unit" href="/edit/{{army._id}}/unit/{{unit._uid}}">{{_ "menus.edit.edit_unit"}}</a>
+						<a data-uid="{{unit._uid}}" class="delete_unit" href="">{{_ "menus.edit.delete_unit"}}</a>
 					</div>
 				</div>
 			</div>

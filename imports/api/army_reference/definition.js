@@ -21,14 +21,14 @@ class LimitedNumberSelector extends _ArmyUnitChoicesSelectors {
 	checkChoiceAuthorized(params, unit_choices, army) {
 		let foundNumber = 0;
 
-		for(let unit of army.units) {
+		for(let unit of army.getUnits()) {
 			let reference = UnitReference.findOne({_id: unit.reference});
 			if(reference._id === params.unit_id) {
 				foundNumber++;
 			}
 
 			if(foundNumber == params.max) {
-				console.log("Already found enough occurences of the unit among army units ("+name+")");
+				//console.log("Already found enough occurences of the unit among army units ("+name+")");
 
 				for(let choice of unit_choices) {
 					if(choice.reference._id === params.unit_id) {

@@ -70,7 +70,7 @@ Router.route('/edit/:id', {
 	name: 'edit',
 	data: function(){
 		let army = Army.findOne({_id: this.params.id});
-		if(this.ready() && !army) {
+		if(!army) {
 			//this.redirect('/');
 		}
 
@@ -80,3 +80,40 @@ Router.route('/edit/:id', {
 		this.render('edit');
 	}
 });
+
+
+Router.route('/edit/:id/unit/:uid', {
+	name: 'edit_unit',
+	onBeforeAction: function () {
+		let army = Army.findOne({_id: this.params.id});
+		if(!army) {
+			this.render('home');
+		} else {		
+			let unit = army.getUnit(this.params.uid);
+			if(!unit) {
+				this.render("edit", {
+					data: function() {
+						return {"army": army};
+					}
+				});
+			} else {
+				this.next();
+			}
+		}
+	},
+	data: function(){
+		let army = Army.findOne({_id: this.params.id});
+		let unit;
+		if(!army) {
+			this.render('loading');
+		} else {
+			unit = army.getUnit(this.params.uid);
+		}
+		
+		return {"army" : army, "unit": unit};
+	},
+	action: function() {
+		this.render('edit_unit');
+	}
+});
+
