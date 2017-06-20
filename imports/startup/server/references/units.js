@@ -8,10 +8,10 @@ UnitReference.remove({});
 
 
 new UnitReference({
-	name: "Tactical Squad",
+	name: "units.space_marines.tactical_squad",
 	models: [
 		new ModelChoice({
-			reference: ModelReference.findOne({name: "Space Marine"})._id,
+			reference: "models.space_marines.space_marine",
 			modelNumberProcessor: new ModelNumberProcessorContainer({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 4, max: 9}
@@ -20,7 +20,7 @@ new UnitReference({
 			wargearProcessors: {}
 		}),
 		new ModelChoice({
-			reference: ModelReference.findOne({name: "Space Marine Sergeant"})._id,
+			reference: "models.space_marines.space_marine_sergeant",
 			modelNumberProcessor: new ModelNumberProcessorContainer({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 1, max: 1}
@@ -36,10 +36,10 @@ new UnitReference({
 }).save();
 
 new UnitReference({
-	name: "Deathwing Terminator Squad",
+	name: "units.space_marines.dark_angels.deathwing_terminator_squad",
 	models: [
 		new ModelChoice({
-			reference: ModelReference.findOne({name: "Deathwing Terminator"})._id,
+			reference: "models.space_marines.dark_angels.deathwing_terminator",
 			modelNumberProcessor: new ModelNumberProcessorContainer({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 4, max: 9}
@@ -48,7 +48,7 @@ new UnitReference({
 			wargearProcessors: {}
 		}),
 		new ModelChoice({
-			reference: ModelReference.findOne({name: "Deathwing Sergeant"})._id,
+			reference: "models.space_marines.dark_angels.deathwing_sergeant",
 			modelNumberProcessor: new ModelNumberProcessorContainer({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 1, max: 1}
@@ -57,7 +57,7 @@ new UnitReference({
 			wargearProcessors: {}
 		}),
 		new ModelChoice({
-			reference: ModelReference.findOne({name: "Watcher in the Dark"})._id,
+			reference: "models.space_marines.dark_angels.watcher_in_the_dark",
 			modelNumberProcessor: new ModelNumberProcessorContainer({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 1, max: 1}

@@ -67,7 +67,7 @@ ModelReference = Class.create({
 	helpers: {
 		buildDefaultInstance() {
 			return new Model({
-				reference: this._id,
+				reference: this.name,
 				woundsLeft: this.profile.W,
 				wargear: {"main_weapon": "Boltgun", 
 						  "grenade1": "Frag grenades", 

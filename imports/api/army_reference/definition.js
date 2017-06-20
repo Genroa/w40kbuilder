@@ -5,7 +5,7 @@ import { Class } from "meteor/jagi:astronomy";
 
 ArmyUnitChoices = {
 	"Dark Angels": function(unit_choices, army) {
-		ArmyUnitChoicesSelectors.LimitedNumberSelector.checkChoiceAuthorized({unit_id: UnitReference.findOne({name: "Deathwing Terminator Squad"})._id, max: 2}, unit_choices, army);
+		ArmyUnitChoicesSelectors.LimitedNumberSelector.checkChoiceAuthorized({unit_id: UnitReference.findOne({name: "units.space_marines.dark_angels.deathwing_terminator_squad"})._id, max: 2}, unit_choices, army);
 	}
 };
 
@@ -22,7 +22,7 @@ class LimitedNumberSelector extends _ArmyUnitChoicesSelectors {
 		let foundNumber = 0;
 
 		for(let unit of army.getUnits()) {
-			let reference = UnitReference.findOne({_id: unit.reference});
+			let reference = UnitReference.findOne({name: unit.reference});
 			if(reference._id === params.unit_id) {
 				foundNumber++;
 			}

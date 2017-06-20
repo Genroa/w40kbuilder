@@ -6,7 +6,7 @@
 	<ul>
 		{{#each army in getUserArmies}}
 			{{#let cost=(army.computeCost)}}
-				<li>{{army.name}} ({{getArmyReferenceName army.reference}}), {{cost}} {{_ "menus.misc.points_unit" count=cost}} <a href="/edit/{{army._id}}">({{_ "menus.misc.edit"}})</a></li>
+				<li>{{army.name}} ({{army.getReferenceName}}), {{cost}} {{_ "menus.misc.points_unit" count=cost}} <a href="/edit/{{army._id}}">({{_ "menus.misc.edit"}})</a></li>
 			{{/let}}
 		{{/each}}
 	</ul>
@@ -18,7 +18,7 @@
 			<label for="army_type">{{_ "menus.misc.army"}}</label>
 			<select id="army_type" name="army_type" required>
 				{{#each armyReference in getArmyReferences }}
-					<option value="{{armyReference._id}}">{{armyReference.name}}</option>
+					<option value="{{armyReference.name}}">{{armyReference.name}}</option>
 				{{/each}}
 			</select>
 		</div>

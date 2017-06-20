@@ -14,9 +14,9 @@ Meteor.methods({
 		return army._id;
 	},
 
-	"add_unit_to_army" : function(army_id, unit_reference_id) {
+	"add_unit_to_army" : function(army_id, reference) {
 		let army = Army.findOne({_id: army_id});
-		let unit_reference = UnitReference.findOne({_id: unit_reference_id});
+		let unit_reference = UnitReference.findOne({name: reference});
 		
 		army.addUnit(unit_reference.buildDefaultInstance());
 		army.save();

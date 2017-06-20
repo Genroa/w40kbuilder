@@ -11,7 +11,7 @@ WargearReference.remove({});
 
 
 new WargearReference({
-	name: "Assault Bolter",
+	name: "wargears.ranged.assault_bolter",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -26,7 +26,7 @@ new WargearReference({
 }).save();
 
 new WargearReference({
-	name: "Combi-grav",
+	name: "wargears.ranged.combi_grav",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -52,7 +52,7 @@ new WargearReference({
 }).save();
 
 new WargearReference({
-	name: "Plasma cannon",
+	name: "wargears.ranged.plasma_cannon",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -78,7 +78,7 @@ new WargearReference({
 }).save();
 
 new WargearReference({
-	name: "Storm Bolter",
+	name: "wargears.ranged.storm_bolter",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -97,7 +97,7 @@ new WargearReference({
 /**********************************/
 
 new WargearReference({
-	name: "Chainfist",
+	name: "wargears.melee.chainfist",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -113,7 +113,7 @@ new WargearReference({
 }).save();
 
 new WargearReference({
-	name: "Lightning claw",
+	name: "wargears.melee.lightning_claw",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -129,7 +129,7 @@ new WargearReference({
 }).save();
 
 new WargearReference({
-	name: "Lightning claw (Pair)",
+	name: "wargears.melee.lightning_claw_pair",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -145,7 +145,7 @@ new WargearReference({
 }).save();
 
 new WargearReference({
-	name: "Power fist",
+	name: "wargears.melee.power_fist",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -161,7 +161,7 @@ new WargearReference({
 }).save();
 
 new WargearReference({
-	name: "Power sword",
+	name: "wargears.melee.power_sword",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -176,7 +176,7 @@ new WargearReference({
 }).save();
 
 new WargearReference({
-	name: "Thunder hammer (Characters)",
+	name: "wargears.melee.thunder_hammer_characters",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -192,7 +192,7 @@ new WargearReference({
 }).save();
 
 new WargearReference({
-	name: "Thunder hammer",
+	name: "wargears.melee.thunder_hammer",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
 		new WeaponProfile({
@@ -213,14 +213,14 @@ new WargearReference({
 /**********************************/
 
 new WargearReference({
-	name: "Storm shield (Characters)",
+	name: "wargears.equipment.storm_shield_characters",
 	type: WargearType.EQUIPMENT,
 	cost: 15,
 	ability: "A model with a storm shield has a 3+ invulnerable save."
 }).save();
 
 new WargearReference({
-	name: "Storm shield",
+	name: "wargears.equipment.storm_shield",
 	type: WargearType.EQUIPMENT,
 	cost: 5,
 	ability: "A model with a storm shield has a 3+ invulnerable save."

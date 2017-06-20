@@ -1,4 +1,17 @@
 {
+	"models": {
 
+
+		"space_marines": {
+			"space_marine": "Space Marine",
+			"space_marine_sergeant": "Space Marine Sergeant",
+
+			"dark_angels": {
+				"deathwing_terminator": "Deathwing Terminator",
+				"deathwing_sergeant": "Deathwing Sergeant",
+				"watcher_in_the_dark": "Watcher in the Dark"
+			}
+		}
+	}
 
 }

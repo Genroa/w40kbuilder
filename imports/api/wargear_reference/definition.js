@@ -1,6 +1,6 @@
 
 
-import { Class, Union } from "meteor/jagi:astronomy";
+import { Class, Union, Enum } from "meteor/jagi:astronomy";
 
 
 
@@ -15,11 +15,10 @@ ObjectOrNumber = Union.create({
 });
 
 
-WargearType = Object.freeze({
-	EQUIPMENT:"EQUIPMENT",
-	WEAPON:"WEAPON"
+WargearType = Enum.create({
+	name: 'WargearType',
+	identifiers: ['EQUIPMENT', 'WEAPON']
 });
-
 
 
 
@@ -52,7 +51,7 @@ WargearReference = Class.create({
 	collection: new Mongo.Collection('wargear_reference'),
 	fields: {
 		name: String,
-		type: String, // WargearType
+		type: WargearType, // WargearType
 		weaponProfiles: {
 			type: [WeaponProfile],
 			optional: true

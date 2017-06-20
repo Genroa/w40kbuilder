@@ -1,4 +1,28 @@
 {
+	"wargears": {
+		"ranged": {
+			"assault_bolter": "Assault Bolter",
+			"combi_grav": "Combi-grav",
+			"plasma_cannon": "Plasma cannon",
+			"storm_bolter": "Storm Bolter"
+		},
+		"melee": {
+			"chainfist": "Chainfist",
+			"lightning_claw": "Lightning claw",
+			"lightning_claw_pair": "Lightning claw (Pair)",
+			"power_fist": "Power fist",
+			"power_sword": "Power sword",
+			"thunder_hammer_characters": "Thunder hammer (Characters)",
+			"thunder_hammer": "Thunder hammer"
+		},
+		"equipment": {
+			"storm_shield_characters": "Storm shield (Characters)",
+			"storm_shield": "Storm shield"
+		}
+	},
 
+	"abilities": {
+
+	}
 
 }

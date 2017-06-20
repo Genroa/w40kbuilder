@@ -19,7 +19,7 @@ import '../../api/instances/definition.js';
 Army.remove({});
 if(Accounts.users.findOne({})) {
 	let a1 = new Army({name: "My first army", 
-					   reference: ArmyReference.findOne({name: "Dark Angels"})._id, 
+					   reference: "Dark Angels", 
 					   owner: Accounts.users.findOne({})._id});
 	a1.save();
 }

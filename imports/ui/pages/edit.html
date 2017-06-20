@@ -2,28 +2,28 @@
 	<a href="{{pathFor route='home'}}">{{_ "menus.misc.back_to_home"}}</a>
 	<br>
 	{{setTitle (_ "menus.edit.page_name" army.name) }}
-	<h3>{{_ "menus.edit.page_name" army.name}} ({{getArmyReferenceName army.reference}})</h3>
+	<h3>{{_ "menus.edit.page_name" army.name}} ({{army.getReferenceName}})</h3>
 
 	<h4>{{_ "menus.edit.available_units"}}:</h4>
 	
 	
 	
-	{{#each unit_choice in (getAuthorizedUnitsForArmy army)}}
+	{{#each unit_choice in (army.getAuthorizedUnitsForArmy)}}
 		<br>
 		{{#if unit_choice.authorized }}
-			<a href="#" class="add_unit" data-reference_id="{{unit_choice.reference._id}}">
-				{{unit_choice.reference.name}} 
+			<a href="#" class="add_unit" data-reference="{{unit_choice.reference.name}}">
+				{{_ unit_choice.reference.name}} 
 
 				{{#if unit_choice.message}}
-					({{unit_choice.message}})
+					({{_ unit_choice.message}})
 				{{/if}}
 			</a>
 		{{else}}
 			<div class="forbidden_unit_choice">
-				{{unit_choice.reference.name}} 
+				{{_ unit_choice.reference.name}} 
 
 				{{#if unit_choice.message}}
-					({{unit_choice.message}})
+					({{_ unit_choice.message}})
 				{{/if}}
 			</div>
 		{{/if}}
@@ -56,7 +56,7 @@
 				<div class="card grey lighten-3">
 					<div class="card-content deep-purple-text">
 						{{#let cost=unit.computeCost}}
-							<span class="card-title">{{getUnitReferenceName unit.reference}} (Id: {{unit.pseudo}}) ({{cost}} {{_ "menus.misc.points_unit" count=cost}})</span>
+							<span class="card-title">{{_ (unit.getName)}} (Id: {{unit.pseudo}}) ({{cost}} {{_ "menus.misc.points_unit" count=cost}})</span>
 						{{/let}}
 						<div> <!-- profiles -->
 							<h5>{{_ "units.misc.profiles"}}:</h5>
@@ -110,7 +110,7 @@
 											</td>
 											<td class="profile_column">
 												<span class="truncate">
-													{{{compactedProfile.name}}}
+													{{{_ compactedProfile.name}}}
 												</span>
 											</td>
 											<td class="{{isModified compactedProfile.profile "M"}}">
@@ -150,7 +150,7 @@
 						</div>
 						<div> <!-- rules -->
 							<h5>{{_ "menus.edit.rules"}}:</h5>
-							{{#each rule in getUnitRules unit}}
+							{{#each rule in unit.getRules}}
 								<a href="" class="tooltipped waves-effect waves-teal btn-flat" data-html="true" data-position="top" data-tooltip="{{rule.description}}">{{rule.name}}</a>
 							{{/each}}
 						</div>

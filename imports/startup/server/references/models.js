@@ -10,7 +10,7 @@ ModelReference.remove({});
 
 
 new ModelReference({
-	name: "Space Marine",
+	name: "models.space_marines.space_marine",
 	wargearOptions: {}, // TODO
 	pointsCost: 13,
 	profile: new ModelProfile({
@@ -29,7 +29,7 @@ new ModelReference({
 
 
 new ModelReference({
-	name: "Space Marine Sergeant",
+	name: "models.space_marines.space_marine_sergeant",
 	wargearOptions: {}, // TODO
 	pointsCost: 13,
 	profile: new ModelProfile({
@@ -48,7 +48,7 @@ new ModelReference({
 
 
 new ModelReference({
-	name: "Deathwing Terminator",
+	name: "models.space_marines.dark_angels.deathwing_terminator",
 	wargearOptions: {}, // TODO
 	pointsCost: 26,
 	profile: new ModelProfile({
@@ -67,7 +67,7 @@ new ModelReference({
 
 
 new ModelReference({
-	name: "Deathwing Sergeant",
+	name: "models.space_marines.dark_angels.deathwing_sergeant",
 	wargearOptions: {}, // TODO
 	pointsCost: 26,
 	profile: new ModelProfile({
@@ -86,7 +86,7 @@ new ModelReference({
 
 
 new ModelReference({
-	name: "Watcher in the Dark",
+	name: "models.space_marines.dark_angels.watcher_in_the_dark",
 	wargearOptions: {}, // TODO
 	pointsCost: 0,
 	profile: new ModelProfile({

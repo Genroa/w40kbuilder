@@ -85,14 +85,14 @@ UnitReference = Class.create({
 		buildDefaultInstance() {
 			let unit = new Unit({
 				pseudo: this.name,
-				reference: this._id,
+				reference: this.name,
 				models: []
 			});
 
 
 			for(model_choice of this.models) {
 				let min = model_choice.modelNumberProcessor.getMinimumAuthorizedNumber(unit);
-				let model_reference = ModelReference.findOne({_id: model_choice.reference});
+				let model_reference = ModelReference.findOne({name: model_choice.reference});
 				for(let i=0; i<min; i++) {
 					unit.models.push(model_reference.buildDefaultInstance());
 				}

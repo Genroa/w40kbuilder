@@ -27,9 +27,6 @@ Template.registerHelper("print", function(obj) {
 
 
 
-
-
-
 Template.registerHelper("formatSvg", function(value) {
 	return value > 0 ? value+"+" : "-";
 });
@@ -45,26 +42,4 @@ Template.registerHelper("getArmyReferences", function() {
 
 Template.registerHelper("getUserArmies", function() {
 	return Meteor.userId() && Army.find({owner: Meteor.userId()});
-});
-
-Template.registerHelper("getArmyReferenceName", function(id) {
-	let ref = ArmyReference.findOne({_id: id});
-	return ref && ref.name;
-});
-
-Template.registerHelper("getUnitReferenceName", function(id) {
-	let ref = UnitReference.findOne({_id: id});
-	return ref && ref.name;
-});
-
-Template.registerHelper("getUnitRules", function(unit) {
-	let ref = UnitReference.findOne({_id: unit.reference});
-	return ref && ref.rules;
-});
-
-
-
-Template.registerHelper("getAuthorizedUnitsForArmy", function(army) {
-	let ref = ArmyReference.findOne({_id: army.reference});
-	return ref && ref.getAuthorizedUnitsChoices(army);
 });

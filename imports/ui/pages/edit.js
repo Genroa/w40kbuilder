@@ -31,7 +31,7 @@ Template.edit.onCreated(function(){
 
 Template.edit.events({
 	'click .add_unit' : function(evt) {
-		Meteor.call("add_unit_to_army", this.army._id, evt.target.dataset.reference_id, function(err, res) {
+		Meteor.call("add_unit_to_army", this.army._id, evt.target.dataset.reference, function(err, res) {
 
 			$('.tooltipped').tooltip({});
 		});

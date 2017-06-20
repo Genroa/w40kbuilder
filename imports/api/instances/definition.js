@@ -14,7 +14,7 @@ Model = Class.create({
 	},
 	helpers: {
 		computeCost(army) {
-			let cost = ModelReference.findOne({_id: this.reference}).pointsCost;
+			let cost = ModelReference.findOne({name: this.reference}).pointsCost;
 			for(wargearSlot in this.wargear) {
 				//cost += ...; //TODO
 			}
@@ -23,11 +23,11 @@ Model = Class.create({
 		},
 
 		computeProfile(unit) {
-			let model_reference = ModelReference.findOne({_id: model.reference});
+			let model_reference = ModelReference.findOne({name: model.reference});
 			let profile = model_reference.profile.profileCopy();
 			// TODO apply rules and wargear modificators
 
-			let unit_reference = UnitReference.findOne({_id: unit.reference});
+			let unit_reference = UnitReference.findOne({name: unit.reference});
 			
 			for(rule of unit_reference.rules) {
 				rule.applyModificationToProfile(unit, profile);
@@ -67,13 +67,8 @@ Unit = Class.create({
 			let profiles = {};
 
 			for(model of this.models) {
-				let model_reference = ModelReference.findOne({_id: model.reference});
-				let profileName = model_reference.name + " (";
-				for(wargearSlot in model.wargear) {
-					profileName += model.wargear[wargearSlot]+", "; // TODO FIX different choice order
-				}
-
-				profileName = profileName.slice(0, -2) + ")";
+				let model_reference = ModelReference.findOne({name: model.reference});
+				let profileName = model_reference.name;
 
 				if(!profiles[profileName]) {
 					profiles[profileName] = {
@@ -87,6 +82,16 @@ Unit = Class.create({
 			}
 
 			return Object.values(profiles);
+		},
+
+		getName() {
+			let ref = UnitReference.findOne({name: this.reference});
+			return ref && ref.name;
+		},
+
+		getRules() {
+			let ref = UnitReference.findOne({name: this.reference});
+			return ref && ref.rules;
 		}
 	}
 });
@@ -123,6 +128,16 @@ Army = Class.create({
 		}
 	},
 	helpers: {
+		getReferenceName() {
+			let ref = ArmyReference.findOne({name: this.reference});
+			return ref && ref.name;
+		},
+
+		getAuthorizedUnitsForArmy() {
+			let ref = ArmyReference.findOne({name: this.reference});
+			return ref && ref.getAuthorizedUnitsChoices(this);
+		},
+
 		computeCost() {
 			let cost = 0;
 			for(let elem of this.getUnits()) {

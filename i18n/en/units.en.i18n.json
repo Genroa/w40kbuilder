@@ -17,6 +17,13 @@
 				"Svg": "Svg",
 				"InvSvg": "InvSvg"
 			}
+		},
+		"space_marines": {
+			"tactical_squad": "Tactical Squad",
+
+			"dark_angels": {
+				"deathwing_terminator_squad": "Deathwing Terminator Squad"
+			}
 		}
 	}
 }
