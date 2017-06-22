@@ -2,9 +2,10 @@
 	"menus": {
 		"misc": {
 			"army": "Army",
-			"back_to_home": "Back to home",
+			"back": "Back",
 			"disconnect": "Disconnect",
 			"edit": "Edit",
+			"delete": "Delete",
 			"name": "Name",
 			"points_unit": "pt",
 			"points_unit_plural": "pts"
@@ -22,6 +23,9 @@
 			"rules": "Rules",
 			"edit_unit": "Edit unit",
 			"delete_unit": "Delete unit"
+		},
+		"edit_unit": {
+			"page_name": "Editing unit \"%s\""
 		}
 	}
 }

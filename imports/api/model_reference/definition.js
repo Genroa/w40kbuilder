@@ -62,7 +62,11 @@ ModelReference = Class.create({
 		name: String,
 		wargearOptions: Object,
 		profile: ModelProfile,
-		pointsCost: Number
+		pointsCost: Number,
+		isReal: {
+			type: Boolean,
+			default: true
+		}
 	},
 	helpers: {
 		buildDefaultInstance() {

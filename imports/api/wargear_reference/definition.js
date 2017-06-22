@@ -43,6 +43,43 @@ WeaponProfile = Class.create({
 
 
 
+_WargearProcessor = class {
+	addWargearChoices(model, wargearChoices, params) {
+		
+	}
+	
+	processWargearChoices(army, unit, model, wargearChoices, params) {
+		return false;
+	}
+}
+
+
+
+
+WargearProcessor = {
+	
+};
+
+
+
+
+WargearProcessorContainer = Class.create({
+	name: 'WargearProcessorContainer',
+	fields: {
+		wargearChoicesFunction: String,
+		params: Object
+	},
+	helpers: {
+		addWargearChoices(wargearChoices) {
+			return WargearProcessor[this.wargearChoicesFunction].addWargearChoices(model, wargearChoices, this.params);
+		},
+		processWargearChoices(army, unit, model, wargearChoices) {
+			return WargearProcessor[this.wargearChoicesFunction].processWargearChoices(army, unit, model, wargearChoices, this.params);
+		}
+	}
+});
+
+
 
 
 

@@ -24,8 +24,30 @@ Meteor.methods({
 
 	"remove_unit_from_army" : function(army_id, uid) {
 		let army = Army.findOne({_id: army_id});
-		//console.log("Removing unit "+uid+" "+army_id);
 		army.removeUnit(uid);
+		army.save();
+	},
+	
+	"add_model_to_unit": function(army_id, uid, reference) {
+		let army = Army.findOne({_id: army_id});
+		let unit = army.getUnit(uid);
+
+		let model_reference = ModelReference.findOne({name: reference});
+		unit.models.push(model_reference.buildDefaultInstance());
+		army.save();
+
+		console.log("done");
+	},
+	
+	"delete_model_from_unit": function(army_id, uid, position) {
+		let army = Army.findOne({_id: army_id});
+		let unit = army.getUnit(uid);
+
+		console.log(army);
+		console.log(uid);
+		console.log(unit);
+
+		unit.models.splice(position, 1);
 		army.save();
 	}
 });

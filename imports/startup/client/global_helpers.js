@@ -27,7 +27,7 @@ Template.registerHelper("print", function(obj) {
 
 
 
-Template.registerHelper("formatSvg", function(value) {
+Template.registerHelper("formatRoll", function(value) {
 	return value > 0 ? value+"+" : "-";
 });
 

@@ -23,18 +23,25 @@ Model = Class.create({
 		},
 
 		computeProfile(unit) {
-			let model_reference = ModelReference.findOne({name: model.reference});
+			let model_reference = ModelReference.findOne({name: this.reference});
 			let profile = model_reference.profile.profileCopy();
-			// TODO apply rules and wargear modificators
-
-			let unit_reference = UnitReference.findOne({name: unit.reference});
 			
-			for(rule of unit_reference.rules) {
-				rule.applyModificationToProfile(unit, profile);
+			
+			if(model_reference.isReal) {
+				// TODO apply rules and wargear modificators
+				
+				let unit_reference = UnitReference.findOne({name: unit.reference});
+				
+				for(rule of unit_reference.rules) {
+					rule.applyModificationToProfile(unit, profile);
+				}
 			}
 
-
 			return profile;
+		},
+		
+		getReference() {
+			return ModelReference.findOne({name: this.reference});
 		}
 	}
 });
@@ -92,6 +99,14 @@ Unit = Class.create({
 		getRules() {
 			let ref = UnitReference.findOne({name: this.reference});
 			return ref && ref.rules;
+		},
+		
+		getModels() {
+			return this.models;
+		},
+		
+		getReference() {
+			return UnitReference.findOne({name: this.reference});
 		}
 	}
 });

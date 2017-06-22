@@ -1,5 +1,5 @@
 <template name="edit">
-	<a href="{{pathFor route='home'}}">{{_ "menus.misc.back_to_home"}}</a>
+	<a href="{{pathFor route='home'}}">{{_ "menus.misc.back"}}</a>
 	<br>
 	{{setTitle (_ "menus.edit.page_name" army.name) }}
 	<h3>{{_ "menus.edit.page_name" army.name}} ({{army.getReferenceName}})</h3>
@@ -117,10 +117,10 @@
 												{{formatStat compactedProfile.profile.M}}
 											</td>
 											<td class="{{isModified compactedProfile.profile "WS"}}">
-												{{formatSvg compactedProfile.profile.WS}}
+												{{formatRoll compactedProfile.profile.WS}}
 											</td>
 											<td class="{{isModified compactedProfile.profile "BS"}}">
-												{{formatSvg compactedProfile.profile.BS}}
+												{{formatRoll compactedProfile.profile.BS}}
 											</td>
 											<td class="{{isModified compactedProfile.profile "S"}}">
 												{{formatStat compactedProfile.profile.S}}
@@ -135,13 +135,13 @@
 												{{formatStat compactedProfile.profile.A}}
 											</td>
 											<td class="{{isModified compactedProfile.profile "Ld"}}">
-												{{formatSvg compactedProfile.profile.Ld}}
+												{{formatStat compactedProfile.profile.Ld}}
 											</td>
 											<td class="{{isModified compactedProfile.profile "Svg"}}">
-												{{formatSvg compactedProfile.profile.Svg}}
+												{{formatRoll compactedProfile.profile.Svg}}
 											</td>
 											<td class="{{isModified compactedProfile.profile "InvSvg"}}">
-												{{formatSvg compactedProfile.profile.InvSvg}}
+												{{formatRoll compactedProfile.profile.InvSvg}}
 											</td>
 										</tr>
 									{{/each}}

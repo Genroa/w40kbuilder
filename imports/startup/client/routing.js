@@ -107,7 +107,7 @@ Router.route('/edit/:id/unit/:uid', {
 		if(!army) {
 			this.render('loading');
 		} else {
-			unit = army.getUnit(this.params.uid);
+			unit = this.params.uid;
 		}
 		
 		return {"army" : army, "unit": unit};

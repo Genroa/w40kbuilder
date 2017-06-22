@@ -1,6 +1,6 @@
 
 
-import { Class } from "meteor/jagi:astronomy";
+import { Class, Enum } from "meteor/jagi:astronomy";
 import '../rule_reference/definition.js';
 
 
@@ -29,14 +29,6 @@ ModelNumberProcessor = {
 };
 
 
-
-
-
-
-
-
-
-
 ModelNumberProcessorContainer = Class.create({
 	name: 'ModelNumberProcessorContainer',
 	fields: {
@@ -55,6 +47,8 @@ ModelNumberProcessorContainer = Class.create({
 
 
 
+
+
 ModelChoice = Class.create({
 	name: 'ModelChoice',
 	fields: {
@@ -62,10 +56,24 @@ ModelChoice = Class.create({
 		modelNumberProcessor: ModelNumberProcessorContainer,
 		wargearSlots: Object,
 		wargearProcessors: Object
+	}, 
+	helpers: {
+		getMinimumAuthorizedNumber(unit) {
+			return this.modelNumberProcessor.getMinimumAuthorizedNumber(unit);
+		},
+		
+		getMaximumAuthorizedNumber(unit) {
+			return this.modelNumberProcessor.getMaximumAuthorizedNumber(unit);
+		}
 	}
 });
 
 
+
+UnitType = Enum.create({
+	name: 'UnitType',
+	identifiers: ['HQ', 'TROOPS', 'ELITES', 'FAST_ATTACK', 'HEAVY_SUPPORT', 'DEDICATED_TRANSPORT', 'FLYER', 'FORTIFICATION', 'LORD_OF_WAR']
+});
 
 
 
@@ -76,6 +84,7 @@ UnitReference = Class.create({
 	fields: {
 		name: String,
 		models: [ModelChoice],
+		type: UnitType,
 		powerLevelProcessor: Object,
 		rules: [Rule],
 		keywords: [String],
@@ -99,6 +108,16 @@ UnitReference = Class.create({
 			}
 
 			return unit;
+		},
+		
+		getModelChoices() {
+			return this.models;
+		},
+		
+		getModelChoice(ref) {
+			for(choice of this.models) {
+				if(ref == choice.reference) return choice;
+			}
 		}
 	}
 });

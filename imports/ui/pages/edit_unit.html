@@ -1,12 +1,42 @@
 <template name="edit_unit">
-	<a href="/edit/{{army._id}}">Retour à l'édition de l'armée</a>
+	{{#let unit=getUnit}}
+		{{setTitle (_ "menus.edit_unit.page_name" unit.pseudo)}}
 	
-	<h5>Edition de l'unité {{unit.pseudo}}</h5>
+		<a href="/edit/{{army._id}}">{{_ "menus.misc.back"}}</a>
 	
-	<p>
-		Ici, lister les ajouts possibles de modèles à l'unité
-	</p>
-	<p>
-		Ici, lister les modèles les uns sous les autres, avec leur wargear éditable.
-	</p>
+		<h5>{{_ "menus.edit_unit.page_name" unit.pseudo}}</h5>
+		
+		<div>
+			<h5>Ajouter des modèles à l'unité:</h5>
+			{{#let reference=unit.getReference}}
+				{{#each choice in reference.getModelChoices}}
+					<a class="add_model waves-effect waves-light btn {{disabledIfMax choice}}" data-reference="{{choice.reference}}">{{_ choice.reference}}</a>
+				{{/each}}
+			{{/let}}
+		</div>
+		<div>
+			<h5>Liste des modèles</h5>
+			
+			{{#each model in unit.getModels}}
+				<div>
+					{{#let profile=(model.computeProfile unit)}}
+						{{_ model.reference}} 
+						{{formatStat profile.M}}
+						{{formatRoll profile.WS}}
+						{{formatRoll profile.BS}}
+						{{formatStat profile.S}}
+						{{formatStat profile.T}}
+						{{formatStat profile.A}}
+						{{formatStat profile.Ld}}
+						{{formatRoll profile.Svg}}
+						{{formatRoll profile.InvSvg}}
+					{{/let}}
+					
+					{{#if moreThanMin model}}
+						<a data-position="{{@index}}" class="delete_model" href="">{{_ "menus.misc.delete"}}</a>
+					{{/if}}
+				</div>
+			{{/each}}
+		</div>
+	{{/let}}
 </template>

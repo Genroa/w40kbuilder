@@ -29,6 +29,7 @@ new UnitReference({
 			wargearProcessors: {}
 		})
 	],
+	type: UnitType.TROOPS,
 	rules: [],
 	powerLevelProcessor: {},
 	factionKeywords: ["<Chapter>"],
@@ -60,7 +61,7 @@ new UnitReference({
 			reference: "models.space_marines.dark_angels.watcher_in_the_dark",
 			modelNumberProcessor: new ModelNumberProcessorContainer({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
-				params: {min: 1, max: 1}
+				params: {min: 0, max: 1}
 			}),
 			wargearSlots: {},
 			wargearProcessors: {}
@@ -73,6 +74,7 @@ new UnitReference({
 		Rules["Unforgiven"],
 		Rules["Watcher in the Dark"]
 	],
+	type: UnitType.ELITES,
 	powerLevelProcessor: {},
 	factionKeywords: ["Dark Angels", "Deathwing"],
 	keywords: ["Infantry", "Terminator", "Deathwing Terminator Squad"]

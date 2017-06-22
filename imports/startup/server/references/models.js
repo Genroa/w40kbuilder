@@ -89,6 +89,7 @@ new ModelReference({
 	name: "models.space_marines.dark_angels.watcher_in_the_dark",
 	wargearOptions: {}, // TODO
 	pointsCost: 0,
+	isReal: false,
 	profile: new ModelProfile({
 		M: 0,
 		WS: 0,
