@@ -102,15 +102,7 @@ Router.route('/edit/:id/unit/:uid', {
 		}
 	},
 	data: function(){
-		let army = Army.findOne({_id: this.params.id});
-		let unit;
-		if(!army) {
-			this.render('loading');
-		} else {
-			unit = this.params.uid;
-		}
-		
-		return {"army" : army, "unit": unit};
+		return {"army" : this.params.id, "unit": this.params.uid};
 	},
 	action: function() {
 		this.render('edit_unit');

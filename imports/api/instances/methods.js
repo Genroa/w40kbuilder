@@ -35,17 +35,11 @@ Meteor.methods({
 		let model_reference = ModelReference.findOne({name: reference});
 		unit.models.push(model_reference.buildDefaultInstance());
 		army.save();
-
-		console.log("done");
 	},
 	
 	"delete_model_from_unit": function(army_id, uid, position) {
 		let army = Army.findOne({_id: army_id});
 		let unit = army.getUnit(uid);
-
-		console.log(army);
-		console.log(uid);
-		console.log(unit);
 
 		unit.models.splice(position, 1);
 		army.save();
