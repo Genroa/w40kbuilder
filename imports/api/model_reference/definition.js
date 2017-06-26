@@ -60,7 +60,6 @@ ModelReference = Class.create({
 	collection: new Mongo.Collection('model_reference'),
 	fields: {
 		name: String,
-		wargearOptions: Object,
 		profile: ModelProfile,
 		pointsCost: Number,
 		isReal: {
@@ -69,13 +68,18 @@ ModelReference = Class.create({
 		}
 	},
 	helpers: {
-		buildDefaultInstance() {
+		buildDefaultInstance(unit_reference) {
+			let wargear = {};
+			let wargearSlots = unit_reference.getModelChoice(this.name).wargearSlots;
+			
+			for(slotName in wargearSlots) {
+				wargear[slotName] = wargearSlots[slotName].default;
+			}
+
 			return new Model({
 				reference: this.name,
 				woundsLeft: this.profile.W,
-				wargear: {"main_weapon": "Boltgun", 
-						  "grenade1": "Frag grenades", 
-						  "grenade2": "Krak grenades"}
+				wargear: wargear
 			});
 		}
 	}

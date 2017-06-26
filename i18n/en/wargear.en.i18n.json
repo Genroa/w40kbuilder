@@ -1,8 +1,25 @@
 {
 	"wargears": {
+		"slots": {
+			"bike": "Bike",
+			"grenade1": "Grenades 1",
+			"grenade2": "Grenades 2",
+			"jump_pack": "Jump Pack",
+			"servo_arm": "Servo-arm",
+			"servo_harness": "Servo-harness",
+			"weapon1": "Weapon 1",
+			"weapon2": "Weapon 2"
+		},
+		"misc": {
+			"nothing": "Nothing"
+		},
 		"ranged": {
 			"assault_bolter": "Assault Bolter",
+			"boltgun": "Boltgun",
+			"bolt_pistol": "Bolt pistol",
 			"combi_grav": "Combi-grav",
+			"frag_grenades": "Frag grenades",
+			"krak_grenades": "Krak grenades",
 			"plasma_cannon": "Plasma cannon",
 			"storm_bolter": "Storm Bolter"
 		},

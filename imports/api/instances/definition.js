@@ -42,6 +42,58 @@ Model = Class.create({
 		
 		getReference() {
 			return ModelReference.findOne({name: this.reference});
+		},
+
+		getWargearSlots() {
+			return Object.keys(this.wargear);
+		},
+
+		getWargear(slotName) {
+			return this.wargear[slotName];
+		},
+
+		getWargearChoices(unit, slotName) {
+
+			let model_choice = unit.getReference().getModelChoice(this.reference);
+			let wargear_config = model_choice.wargearSlots[slotName];
+			let wargearChoices = [];
+
+
+			// Default choice
+			wargearChoices.push({
+				name: this.getWargear(slotName),
+				authorized: true,
+				selected: this.wargear[slotName] === wargear_config.default,
+				message: ""
+			});
+			
+
+			// Processors add their choices
+			let choices = [];
+			
+			if(wargear_config.processors) {
+				for(processor_container of wargear_config.processors) {
+					let processor = WargearProcessor[processor_container.processorFunction];
+					
+					if(processor) {
+						processor.addWargearChoices(this, choices, processor_container.params);
+					}
+				}
+			}
+			
+
+			for(choice of choices) {
+				wargearChoices.push({
+					name: choice,
+					authorized: true,
+					selected: this.wargear[slotName] === choice,
+					message: ""
+				});
+			}
+
+			// TODO processors filtering
+
+			return wargearChoices;
 		}
 	}
 });

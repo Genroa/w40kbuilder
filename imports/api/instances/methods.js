@@ -33,7 +33,7 @@ Meteor.methods({
 		let unit = army.getUnit(uid);
 
 		let model_reference = ModelReference.findOne({name: reference});
-		unit.models.push(model_reference.buildDefaultInstance());
+		unit.models.push(model_reference.buildDefaultInstance(unit.getReference()));
 		army.save();
 	},
 	

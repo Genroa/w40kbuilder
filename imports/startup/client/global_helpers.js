@@ -35,6 +35,10 @@ Template.registerHelper("formatStat", function(value) {
 	return value > 0 ? value : "-";
 });
 
+Template.registerHelper("formatWargearSlot", function(slotName) {
+	return "wargears.slots."+slotName;
+})
+
 
 Template.registerHelper("getArmyReferences", function() {
 	return ArmyReference.find({}, {sort: {name: 1}});

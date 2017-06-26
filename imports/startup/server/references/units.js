@@ -16,8 +16,33 @@ new UnitReference({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 4, max: 9}
 			}),
-			wargearSlots: {},
-			wargearProcessors: {}
+			wargearSlots: {
+				"weapon1": {
+					default: "wargears.ranged.boltgun",
+					processors: [{
+						processorFunction: "IfAtLeastXModelsProcessor",
+						params: {
+							value: 10,
+							wargear: [] //TODO
+						}
+					},
+					{
+						processorFunction: "UniqueInUnitProcessor",
+						params: {
+							wargear: [] //TODO
+						}
+					}]
+				},
+				"weapon2": {
+					default: "wargears.ranged.bolt_pistol"
+				},
+				"grenade1": {
+					default: "wargears.ranged.frag_grenades"
+				},
+				"grenade2": {
+					default: "wargears.ranged.krak_grenades"
+				}
+			}
 		}),
 		new ModelChoice({
 			reference: "models.space_marines.space_marine_sergeant",
@@ -25,8 +50,21 @@ new UnitReference({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 1, max: 1}
 			}),
-			wargearSlots: {},
-			wargearProcessors: {}
+			wargearSlots: {
+				"weapon1": {
+					default: "wargears.ranged.boltgun",
+					processors: []
+				},
+				"weapon2": {
+					default: "wargears.ranged.bolt_pistol"
+				},
+				"grenade1": {
+					default: "wargears.ranged.frag_grenades"
+				},
+				"grenade2": {
+					default: "wargears.ranged.krak_grenades"
+				}
+			}
 		})
 	],
 	type: UnitType.TROOPS,
@@ -45,8 +83,23 @@ new UnitReference({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 4, max: 9}
 			}),
-			wargearSlots: {},
-			wargearProcessors: {}
+			wargearSlots: {
+				"weapon1": {
+					default: "wargears.melee.power_fist",
+					processors: [
+						{
+							processorFunction: "SimpleWargearChoice",
+							params: {
+								weapon: "wargears.melee.chainfist"
+							}
+						}
+					]
+				},
+				"weapon2": {
+					default: "wargears.ranged.storm_bolter",
+					processors: []
+				}
+			}
 		}),
 		new ModelChoice({
 			reference: "models.space_marines.dark_angels.deathwing_sergeant",
@@ -54,8 +107,16 @@ new UnitReference({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 1, max: 1}
 			}),
-			wargearSlots: {},
-			wargearProcessors: {}
+			wargearSlots: {
+				"weapon1": {
+					default: "wargears.melee.power_sword",
+					processors: []
+				},
+				"weapon2": {
+					default: "wargears.ranged.storm_bolter",
+					processors: []
+				}
+			}
 		}),
 		new ModelChoice({
 			reference: "models.space_marines.dark_angels.watcher_in_the_dark",
@@ -63,8 +124,7 @@ new UnitReference({
 				boundsCheckFunction: "SimpleBoundedNumberProcessor",
 				params: {min: 0, max: 1}
 			}),
-			wargearSlots: {},
-			wargearProcessors: {}
+			wargearSlots: {}
 		})
 	],
 	rules: [

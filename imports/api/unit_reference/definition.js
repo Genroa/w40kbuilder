@@ -54,8 +54,7 @@ ModelChoice = Class.create({
 	fields: {
 		reference: String,
 		modelNumberProcessor: ModelNumberProcessorContainer,
-		wargearSlots: Object,
-		wargearProcessors: Object
+		wargearSlots: Object
 	}, 
 	helpers: {
 		getMinimumAuthorizedNumber(unit) {
@@ -93,7 +92,7 @@ UnitReference = Class.create({
 	helpers: {
 		buildDefaultInstance() {
 			let unit = new Unit({
-				pseudo: this.name,
+				pseudo: TAPi18n.__(this.name),
 				reference: this.name,
 				models: []
 			});
@@ -103,7 +102,7 @@ UnitReference = Class.create({
 				let min = model_choice.modelNumberProcessor.getMinimumAuthorizedNumber(unit);
 				let model_reference = ModelReference.findOne({name: model_choice.reference});
 				for(let i=0; i<min; i++) {
-					unit.models.push(model_reference.buildDefaultInstance());
+					unit.models.push(model_reference.buildDefaultInstance(this));
 				}
 			}
 

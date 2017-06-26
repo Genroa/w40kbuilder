@@ -15,7 +15,7 @@ import './references/armies.js';
 import '../../api/instances/definition.js';
 
 
-
+/*
 Army.remove({});
 if(Accounts.users.findOne({})) {
 	let a1 = new Army({name: "My first army", 
@@ -23,5 +23,5 @@ if(Accounts.users.findOne({})) {
 					   owner: Accounts.users.findOne({})._id});
 	a1.save();
 }
-
+*/
 console.log("done.");

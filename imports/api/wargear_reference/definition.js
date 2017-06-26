@@ -47,17 +47,27 @@ _WargearProcessor = class {
 	addWargearChoices(model, wargearChoices, params) {
 		
 	}
-	
-	processWargearChoices(army, unit, model, wargearChoices, params) {
+
+	// return false if the selector accepts other choices.
+	processWargearChoices(unit, model, wargearChoices, params) {
 		return false;
 	}
 }
 
 
+SimpleWargearChoice = class extends _WargearProcessor {
+	addWargearChoices(model, wargearChoices, params) {
+		wargearChoices.push(params.weapon);
+	}
+	
+	processWargearChoices(unit, model, wargearChoices, params) {
+		return false;
+	}
+}
 
 
 WargearProcessor = {
-	
+	"SimpleWargearChoice" : new SimpleWargearChoice()
 };
 
 

@@ -71,7 +71,7 @@ Router.route('/edit/:id', {
 	data: function(){
 		let army = Army.findOne({_id: this.params.id});
 		if(!army) {
-			//this.redirect('/');
+			this.render('loading');
 		}
 
 		return {"army" : army};
@@ -87,8 +87,8 @@ Router.route('/edit/:id/unit/:uid', {
 	onBeforeAction: function () {
 		let army = Army.findOne({_id: this.params.id});
 		if(!army) {
-			this.render('home');
-		} else {		
+			this.render('loading');
+		} else {
 			let unit = army.getUnit(this.params.uid);
 			if(!unit) {
 				this.render("edit", {

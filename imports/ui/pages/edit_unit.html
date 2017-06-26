@@ -19,6 +19,7 @@
 			
 			{{#each model in unit.getModels}}
 				<div>
+					<br>
 					{{#let profile=(model.computeProfile unit)}}
 						{{_ model.reference}} 
 						{{formatStat profile.M}}
@@ -31,7 +32,24 @@
 						{{formatRoll profile.Svg}}
 						{{formatRoll profile.InvSvg}}
 					{{/let}}
-					
+					<br>
+					{{#each wargearSlot in model.getWargearSlots}}
+						{{_ (formatWargearSlot wargearSlot)}}: 
+						{{#let choices=(model.getWargearChoices unit wargearSlot)}}
+							{{#if (needsSelection choices)}}
+								<div class="choice_select_wrapper">
+									<select id="test">
+										{{#each choice in choices}}
+											<option value="{{choice.name}}" {{selectedOrAuthorized choice}}>{{_ choice.name}}</option>
+										{{/each}}
+									</select>
+								</div>
+							{{else}}
+								{{_ (model.getWargear wargearSlot)}}
+							{{/if}}
+						{{/let}}
+					{{/each}}
+
 					{{#if moreThanMin model}}
 						<a data-position="{{@index}}" class="delete_model" href="">{{_ "menus.misc.delete"}}</a>
 					{{/if}}

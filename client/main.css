@@ -35,3 +35,7 @@
 	opacity: 0.8;
 }
 */
+
+.choice_select_wrapper li.disabled > span {
+	color: red !important;
+}

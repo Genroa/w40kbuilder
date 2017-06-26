@@ -26,6 +26,36 @@ new WargearReference({
 }).save();
 
 new WargearReference({
+	name: "wargears.ranged.boltgun",
+	type: WargearType.WEAPON,
+	weaponProfiles: [
+		new WeaponProfile({
+			type: "Rapide Fire 1",
+			range: 24,
+			S: 4,
+			AP: 0,
+			D: 1
+		})
+	],
+	cost: 0
+}).save();
+
+new WargearReference({
+	name: "wargears.ranged.bolt_pistol",
+	type: WargearType.WEAPON,
+	weaponProfiles: [
+		new WeaponProfile({
+			type: "Pistol 1",
+			range: 12,
+			S: 4,
+			AP: 0,
+			D: 1
+		})
+	],
+	cost: 0
+}).save();
+
+new WargearReference({
 	name: "wargears.ranged.combi_grav",
 	type: WargearType.WEAPON,
 	weaponProfiles: [
@@ -49,6 +79,36 @@ new WargearReference({
 	],
 	cost: 17,
 	ability: "When attacking with this weapon, choose one or both of the profiles below. If you choose both, substract 1 from all hit rolls for this weapon."
+}).save();
+
+new WargearReference({
+	name: "wargears.ranged.frag_grenade",
+	type: WargearType.WEAPON,
+	weaponProfiles: [
+		new WeaponProfile({
+			type: "Grenade D6",
+			range: 6,
+			S: 3,
+			AP: 0,
+			D: 1
+		})
+	],
+	cost: 0
+}).save();
+
+new WargearReference({
+	name: "wargears.ranged.krak_grenade",
+	type: WargearType.WEAPON,
+	weaponProfiles: [
+		new WeaponProfile({
+			type: "Grenade 1",
+			range: 6,
+			S: 6,
+			AP: -1,
+			D: "D3"
+		})
+	],
+	cost: 0
 }).save();
 
 new WargearReference({
@@ -225,18 +285,6 @@ new WargearReference({
 	cost: 5,
 	ability: "A model with a storm shield has a 3+ invulnerable save."
 }).save();
-
-
-
-// DT power fist + storm bolter
-// DS power sword + storm bolter
-
-// Any model may replace all of its weapons with 2 lightning claws or thunder hammer + storm shield
-// Any model may replace power fist with chainfist
-// Every 5 models, one DT may take a plasma canon or an item from the Terminator Heavy Weapons list
-
-
-
 
 
 
